@@ -55,6 +55,9 @@ endif"}}}
 if !exists("g:gundo_playback_delay")"{{{
     let g:gundo_playback_delay = 60
 endif"}}}
+if !exists('g:gundo_mirror_graph')"{{{
+    let g:gundo_mirror_graph = 0
+endif"}}}
 
 let s:has_supported_python = 0
 if g:gundo_prefer_python3 && has('python3')"{{{
@@ -171,11 +174,16 @@ function! s:GundoSyntaxGraph()"{{{
     syn match GundoHelp '\v^".*$'
     syn match GundoNumberField '\v\[[0-9]+\]'
     syn match GundoNumber '\v[0-9]+' contained containedin=GundoNumberField
+    syn region GundoDiff start=/\v<ago> / end=/$/
+    syn match GundoDiffAdd '\v\+[^+-]+\+' contained containedin=GundoDiff
+    syn match GundoDiffDelete '\v-[^+-]+-' contained containedin=GundoDiff
 
     hi def link GundoCurrentLocation Keyword
     hi def link GundoHelp Comment
     hi def link GundoNumberField Comment
     hi def link GundoNumber Identifier
+    hi def link GundoDiffAdd DiffAdd
+    hi def link GundoDiffDelete DiffDelete
 endfunction"}}}
 
 "}}}
