@@ -22,6 +22,7 @@ CONTENTS                                                      *Gundo-contents*
         3.10 gundo_auto_preview ........ |gundo_auto_preview|
         3.11 gundo_verbose_graph ....... |gundo_verbose_graph|
         3.12 gundo_playback_delay ...... |gundo_playback_delay|
+        3.13 gundo_mirror_graph  ....... |gundo_mirror_graph|
     4. License ......................... |GundoLicense|
     5. Bugs ............................ |GundoBugs|
     6. Contributing .................... |GundoContributing|
@@ -237,6 +238,13 @@ for a faster playback.
 
 Default: 60
 
+------------------------------------------------------------------------------
+3.13 g:gundo_mirror_graph                                *gundo_mirror_graph*
+
+Set this to 0 to align the graph to the left; set to 1 to align to the right.
+
+Default: 1 (mirror graph)
+
 ==============================================================================
 4. License                                                      *GundoLicense*
 
@@ -260,6 +268,16 @@ GitHub: http://github.com/sjl/gundo.vim/
 ==============================================================================
 7. Changelog                                                  *GundoChangelog*
 
+v3.X - WIP
+    * Add one line diff in __Gundo__ window.
+    * Adds g:gundo_mirror_graph setting.
+    * Adds ability to toggle help on/off in __Gundo__ window.
+    * Adds J and K commands (navigate between written undos)
+    * Adds /, n and N commands (search undos)
+    * Adds g:gundo_verbose_graph setting.
+    * Adds g:gundo_mirror_graph setting.
+    * Show written undos in the Gundo graph.
+    * Adds live reload of Gundo as you edit.
 v2.5.0
     * Fix the help window to take custom mappings into account.
     * Add g:gundo_playback_delay option.
