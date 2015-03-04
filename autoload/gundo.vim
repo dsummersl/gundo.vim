@@ -52,6 +52,9 @@ endif"}}}
 if !exists("g:gundo_verbose_graph")"{{{
     let g:gundo_verbose_graph = 0
 endif"}}}
+if !exists("g:gundo_playback_delay")"{{{
+    let g:gundo_playback_delay = 60
+endif"}}}
 
 let s:has_supported_python = 0
 if g:gundo_prefer_python3 && has('python3')"{{{

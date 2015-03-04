@@ -281,7 +281,7 @@ def _undo_to(n):
 
 INLINE_HELP = '''\
 " Gundo for %s (%d):
-" j/k  - Next/Prev undo state.
+" %s/%s  - move between undo states
 " J/K  - Next/Prev write state.
 " /    - Find changes that match string.
 " n/N  - Next/Prev undo that matches search.
@@ -451,9 +451,11 @@ def GundoRenderGraph():
     result = [' ' + l for l in result]
 
     target = (vim.eval('g:gundo_target_f'), int(vim.eval('g:gundo_target_n')))
+    mappings = (vim.eval('g:gundo_map_move_older'),
+                vim.eval('g:gundo_map_move_newer'))
 
     if int(vim.eval('g:gundo_help')):
-        header = (INLINE_HELP % target).splitlines()
+        header = (INLINE_HELP % (target + mappings)).splitlines()
     else:
         header = []
 
@@ -739,6 +741,7 @@ def GundoPlayTo():
 
     target_n = GundoGetTargetState()
     back = int(vim.eval('g:gundo_target_n'))
+    delay = int(vim.eval('g:gundo_playback_delay'))
 
     vim.command('echo "%s"' % back)
 
@@ -785,7 +788,7 @@ def GundoPlayTo():
         normal('zz')
         _goto_window_for_buffer(back)
         vim.command('redraw')
-        vim.command('sleep 60m')
+        vim.command('sleep %dm' % delay)
 
 def initPythonModule():
     if sys.version_info[:2] < (2, 4):
