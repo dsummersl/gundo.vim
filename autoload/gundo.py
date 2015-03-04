@@ -360,6 +360,7 @@ def _fmt_time(t):
 def _output_preview_text(lines):
     _goto_window_for_buffer_name('__Gundo_Preview__')
     vim.command('setlocal modifiable')
+    lines = [re.sub('\n','',v) for v in lines]
     vim.current.buffer[:] = lines
     vim.command('setlocal nomodifiable')
 
@@ -458,7 +459,9 @@ def GundoRenderGraph():
 
     vim.command('call s:GundoOpenGraph()')
     vim.command('setlocal modifiable')
-    vim.current.buffer[:] = (header + result)
+    lines = (header + result)
+    lines = [re.sub('\n','',v) for v in lines]
+    vim.current.buffer[:] = lines
     vim.command('setlocal nomodifiable')
 
     i = 1
