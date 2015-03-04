@@ -228,6 +228,7 @@ a graph half as long.
 
 Default: 1 (verbose graphs)
 
+------------------------------------------------------------------------------
 3.12 g:gundo_playback_delay                             *gundo_playback_delay*
 
 This is the delay in milliseconds between each change when running 'play to'
